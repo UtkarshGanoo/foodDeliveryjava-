@@ -58,7 +58,7 @@ public class Menu_Dao_Implement implements MenuDao {
 		menu.setMenuItem_Id(1);
 		menudao.update_MenuItem(menu);*/
 		
-		menudao.delete_MenuItem(2);
+		/*menudao.delete_MenuItem(2);*/
 		
 		
 	}
