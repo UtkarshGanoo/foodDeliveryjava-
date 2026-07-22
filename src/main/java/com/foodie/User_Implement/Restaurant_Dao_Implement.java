@@ -35,22 +35,22 @@ public class Restaurant_Dao_Implement implements RestaurantDao
 		RestaurantDao restsurantdao = new Restaurant_Dao_Implement();
 		Restaurant restaurant = new Restaurant();
 		
-		/*restaurant.setRestaurant_Name("Padmavati bhojnalay");
-		restaurant.setImage_path("c://users/UTKASRHGANOO/img_25478965463.jpg");
-		restaurant.setRating(3);
-		restaurant.setETA("15-20 min");
-		restaurant.setCuisineType("SouthIndian,Indian");
-		restaurant.setAddress("gokuldham socity Powdergali Filmcity Goregaon East,mumbai");
-		restaurant.setIsActive(true);
+		restaurant.setRestaurant_Name("amar sweets");
+		restaurant.setImage_path("c://users/UTKASRHGANOO/amarlogo.jpeg");
+		restaurant.setRating(4);
+		restaurant.setETA("20 -40 min");
+		restaurant.setCuisineType("sweets");
+		restaurant.setAddress("bavadiya near vikas nagar dewas mp");
+		restaurant.setIsActive(false);
 		restaurant.setRestaurant_OwnerId(1);
 		
-		restsurantdao.addRestaurant(restaurant);*/
+		restsurantdao.addRestaurant(restaurant);
 		
 		/*restsurantdao.getRestaurant(1);*/
 		
 		/*restsurantdao.getallRestaurant();*/
 		
-		restaurant.setRestaurant_Name("Padmavati bhojnalaya ");
+		/*restaurant.setRestaurant_Name("Padmavati bhojnalaya ");
 		restaurant.setImage_path("c://users/UTKASRHGANOO/img_25478965463.jpeg");
 		restaurant.setRating(5);
 		restaurant.setETA("10-20 min");
@@ -58,7 +58,7 @@ public class Restaurant_Dao_Implement implements RestaurantDao
 		restaurant.setAddress("gokuldham socity Powdergali Near Filmcity Goregaon East,mumbai");
 		restaurant.setIsActive(false);
 		restaurant.setRestaurant_Id(1);
-		restsurantdao.update_Restaurant(restaurant);
+		restsurantdao.update_Restaurant(restaurant);*/
 
 	}
 	
@@ -73,7 +73,7 @@ public class Restaurant_Dao_Implement implements RestaurantDao
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection= DriverManager.getConnection(url,username,password);
-			System.out.println("connection Established.....");
+			System.out.println("connection Established....."+ connection);
 			
 		}
 		catch(SQLException |ClassNotFoundException  e) 
@@ -188,6 +188,10 @@ public class Restaurant_Dao_Implement implements RestaurantDao
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		finally
+		{
+			closeResources();
 		}
 		return restaurantDetail;
 	}

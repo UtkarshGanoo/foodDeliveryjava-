@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.foodie.model.Restaurant" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +106,7 @@
 
         .rating-badge {
             background-color: #f43f5e;
-            color: #ffffff;
+            color: black;
             padding: 4px 8px;
             border-radius: 6px;
             font-weight: 600;
@@ -118,54 +121,52 @@
     </style>
 </head>
 <body>
-	<div class="container">
-        <h1 class="page-title">Popular Restaurants</h1>
+	<div class="restaurant-grid">
 
-        <div class="restaurant-grid">
-            
-            <%-- 
-               [TEMPORARY DUMMY DATA FOR VIEW TESTING]
-               Abhi view test karne ke liye ye 6 baar static cards generate karega.
-               Jab Controller ready ho jaye, toh bas is niche wale <c:forEach> line ko badal dena.
-            --%>
-            <c:forEach var="i" begin="1" end="6">
+    <%
+        List<Restaurant> restaurantList = (List<Restaurant>) session.getAttribute("restaurantList");
+    %>
+
+    <h2>Total Restaurants = <%= (restaurantList != null) ? restaurantList.size() : 0 %></h2>
+
+    <%
+        if (restaurantList != null) {
+            for (Restaurant restaurant : restaurantList) {
+    %>
                 <div class="restaurant-card">
                     <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500" alt="Restaurant Image">
+                        <img src="<%= restaurant.getImage_path() %>" alt="<%= restaurant.getRestaurant_Name() %>">
                     </div>
                     <div class="card-content">
-                        <h3 class="restaurant-name">Restaurant Name ${i}</h3>
-                        <p class="cuisine-type">North Indian, Fast Food</p>
+                        <div class="restaurant-name"><%= restaurant.getRestaurant_Name() %></div>
+                        <div class="cuisine-type"><%= restaurant.getCuisineType() %></div>
                         <div class="restaurant-meta">
-                            <span class="rating-badge">★ 4.5</span>
-                            <span>30 mins</span>
+                            <span class="rating-badge"><%= restaurant.getRating() %> ★</span>
+                            <span><%= restaurant.getETA() %></span>
                         </div>
                     </div>
                 </div>
-            </c:forEach>
-            
-            <%--
-               [FUTURE CONTROLLER INTEGRATION CODE]
-               Jab aapka controller list bhejega, toh aap upar wale loop ko hata kar ise active kar dena:
-               
-               <c:forEach var="res" items="${restaurantList}">
-                    <div class="restaurant-card">
-                        <div class="card-image-wrapper">
-                            <img src="${res.imagePath}" alt="${res.name}">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="restaurant-name">${res.name}</h3>
-                            <p class="cuisine-type">${res.cuisineType}</p>
-                            <div class="restaurant-meta">
-                                <span class="rating-badge">★ ${res.rating}</span>
-                                <span>${res.eta}</span>
-                            </div>
-                        </div>
-                    </div>
-               </c:forEach>
-            --%>
+    <%
+            }
+        } else {
+    %>
+            <p>No restaurants found in session.</p>
+    <%
+        }
+    %>
 
-        </div>
-    </div>
+</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
