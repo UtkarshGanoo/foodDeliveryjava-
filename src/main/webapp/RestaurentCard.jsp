@@ -126,9 +126,7 @@
     <%
         List<Restaurant> restaurantList = (List<Restaurant>) session.getAttribute("restaurantList");
     %>
-
-    <h2>Total Restaurants = <%= (restaurantList != null) ? restaurantList.size() : 0 %></h2>
-
+	 
     <%
         if (restaurantList != null) {
             for (Restaurant restaurant : restaurantList) {

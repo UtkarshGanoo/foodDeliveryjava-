@@ -24,7 +24,6 @@ public class RestaurantServlet extends HttpServlet {
 	        // call getallRestaurant() using the reference
 	        List<Restaurant> restaurantList = RdaoI.getallRestaurant();
 
-	        System.out.println("Restaurant Size = " + restaurantList.size());
 
 	        // put the list in session object
 	        HttpSession session = request.getSession();

@@ -11,5 +11,6 @@ public interface User_dao {
 	List<User> getallUser();
 	void update_User(User user);
 	void delete_User(int User_Id);
+	User loginUser(String username, String password);
 	
 }

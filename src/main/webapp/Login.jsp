@@ -153,7 +153,7 @@
 
         <!-- Form -->
         <!-- Note: action variable aapke Login Controller Servlet se match hona chahiye -->
-        <form action="#" method="POST">
+        <form action="LoginServlet" method="POST">
             
             <!-- Username -->
             <div class="form-group">

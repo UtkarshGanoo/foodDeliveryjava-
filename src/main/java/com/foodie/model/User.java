@@ -6,7 +6,7 @@ public class User {
 	
 	//we declare here veriable
 	private String Name;
-	private long Phone;
+	private String Phone;
 	private String Email;
 	private String Address;
 	private String password;
@@ -23,10 +23,10 @@ public class User {
 	
 	
 	//create a parameterize constructor
-	public User(String Name, long Phone, String Email, String Address, String password, String UserName, int User_Id,String Role,LocalDateTime CreatedDateTime,LocalDateTime LastLogin) 
+	public User(String Name, String u_Phone, String Email, String Address, String password, String UserName, int User_Id,String Role,LocalDateTime CreatedDateTime,LocalDateTime LastLogin) 
 	{
 		this.Name=Name;
-		this.Phone=Phone;
+		this.Phone=u_Phone;
 		this.Email=Email;
 		this.Address=Address;
 		this.password=password;
@@ -52,10 +52,10 @@ public class User {
 	public void setName(String name) {
 		Name = name;
 	}
-	public long getPhone() {
+	public String getPhone() {
 		return Phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		Phone = phone;
 	}
 	public String getEmail() {

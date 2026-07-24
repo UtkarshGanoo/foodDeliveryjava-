@@ -35,6 +35,8 @@ public class User_Dao_Implement implements User_dao{
 
 	final static String Delete_UserQuery=" DELETE FROM `userdetails` WHERE `User_Id`=? ";
 	
+	final static String LOGIN_QUERY ="SELECT * FROM userdetails WHERE UserName=? AND Password=?";
+	
 	public User_Dao_Implement() {
 //here we set the username and password and url and we are set in the constructor because one time loading
 		String username = "root" ;
@@ -61,12 +63,12 @@ public class User_Dao_Implement implements User_dao{
 		User user = new User();// we need to create separate User object 
 	
 		
-		user.setName("Tulsidas Khan");
-		user.setEmail("meerashekh@gmail.com");
-		user.setPhone(9758245669L);
-		user.setPassword("tK2581");
-		user.setAddress("barhmangali panditchouraha near ram mandir ");
-		user.setUserName("mTk1456");
+		user.setName("Ranu Sharma");
+		user.setEmail("ranu@gmail.com");
+		user.setPhone("957586321");
+		user.setPassword("ranu@123");
+		user.setAddress("tokhurd jila dewas ");
+		user.setUserName("Ranu2588s");
 		user.setRole("USER");
 		user.setCreatedDateTime(LocalDateTime.now());
 		user.setLastLogin(LocalDateTime.now());
@@ -103,7 +105,7 @@ public class User_Dao_Implement implements User_dao{
 
 			statement.setString(1,user.getName());
 			statement.setString(2,user.getEmail());
-			statement.setLong(3,user.getPhone());
+			statement.setString(3,user.getPhone());
 			statement.setString(4,user.getAddress());
 			statement.setString(5,user.getUserName());
 			statement.setString(6,user.getPassword());
@@ -149,7 +151,7 @@ public class User_Dao_Implement implements User_dao{
 				String U_Uname=result.getString("UserName");
 				String U_Email=result.getString("Email");
 				String U_Address=result.getString("Address");
-				long U_Phone=result.getLong("Phone");
+				String U_Phone=result.getString("Phone");
 				String U_Role=result.getString("Role");
 				String U_Password=result.getString("Password");
 				LocalDateTime U_CreateDate=result.getTimestamp("CreatedDate").toLocalDateTime();
@@ -207,7 +209,7 @@ public class User_Dao_Implement implements User_dao{
 				String U_Uname=result.getString("UserName");
 				String U_Email=result.getString("Email");
 				String U_Address=result.getString("Address");
-				long U_Phone=result.getLong("Phone");
+				String U_Phone=result.getString("Phone");
 				String U_Role=result.getString("Role");
 				String U_Password=result.getString("Password");
 				LocalDateTime U_CreateDate=result.getTimestamp("CreatedDate").toLocalDateTime();
@@ -252,7 +254,7 @@ public class User_Dao_Implement implements User_dao{
 			statement=connection.prepareStatement(User_UpdateQuery);
 			statement.setString(1,user.getName());
 			statement.setString(2,user.getEmail());
-			statement.setLong(3,user.getPhone());
+			statement.setString(3,user.getPhone());
 			statement.setString(4,user.getUserName());
 			statement.setString(5,user.getPassword());
 			statement.setString(6,user.getRole());
@@ -304,7 +306,53 @@ public class User_Dao_Implement implements User_dao{
 			closeResources();	
 		}
 
-			}
+	}
+	
+	public User loginUser(String username, String password) {
+
+	    User user = null;
+
+	    try {
+
+	        statement = connection.prepareStatement(LOGIN_QUERY);
+
+	        statement.setString(1, username);
+	        statement.setString(2, password);
+
+	        result = statement.executeQuery();
+
+	        if(result.next()) {
+
+	            user = new User();
+
+	            user.setUser_Id(result.getInt("User_Id"));
+	            user.setName(result.getString("Name"));
+	            user.setEmail(result.getString("Email"));
+	            user.setPhone(result.getString("Phone"));
+	            user.setAddress(result.getString("Address"));
+	            user.setUserName(result.getString("UserName"));
+	            user.setPassword(result.getString("Password"));
+	            user.setRole(result.getString("Role"));
+	            user.setCreatedDateTime(
+	                    result.getTimestamp("CreatedDate").toLocalDateTime());
+
+	            user.setLastLogin(
+	                    result.getTimestamp("LastLoginDate").toLocalDateTime());
+	        }
+
+	    }
+	    catch(Exception e) {
+
+	        e.printStackTrace();
+
+	    }
+	    finally {
+
+	        closeResources();
+	    }
+
+	    return user;
+	}
 
 	// here we create a method to close resource that is more easy and flexible and esay to use just call in finally block 
 		private void closeResources()
@@ -325,4 +373,6 @@ public class User_Dao_Implement implements User_dao{
 		        e.printStackTrace();
 		    	}
 		}
+
+		
 }

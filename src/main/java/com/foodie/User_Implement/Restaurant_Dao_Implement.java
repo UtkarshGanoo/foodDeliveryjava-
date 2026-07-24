@@ -73,7 +73,7 @@ public class Restaurant_Dao_Implement implements RestaurantDao
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection= DriverManager.getConnection(url,username,password);
-			System.out.println("connection Established....."+ connection);
+			System.out.println("connection Established....." );
 			
 		}
 		catch(SQLException |ClassNotFoundException  e) 

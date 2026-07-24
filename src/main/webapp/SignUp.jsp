@@ -153,7 +153,7 @@
         </div>
 
         <!-- Form -->
-        <form action="/#" method="POST">
+        <form action="SignupServlet" method="POST">
             
             <!-- Name -->
             <div class="form-group">
@@ -171,12 +171,6 @@
             <div class="form-group">
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" required placeholder="9876543210" pattern="[0-9]{10}" title="Please enter a valid 10-digit number">
-            </div>
-
-            <!-- Address -->
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" id="address" name="address" required placeholder="123 Street, City">
             </div>
 
             <!-- Username -->
@@ -197,7 +191,7 @@
 
         <!-- Footer -->
         <div class="form-footer">
-            Already have an account? <a href="login.jsp">Log In</a>
+            Already have an account? <a href="Login.jsp">Log In</a>
         </div>
     </div>
 
