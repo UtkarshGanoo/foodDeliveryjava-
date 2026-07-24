@@ -35,7 +35,7 @@ public class Restaurant_Dao_Implement implements RestaurantDao
 		RestaurantDao restsurantdao = new Restaurant_Dao_Implement();
 		Restaurant restaurant = new Restaurant();
 		
-		restaurant.setRestaurant_Name("amar sweets");
+	/*	restaurant.setRestaurant_Name("amar sweets");
 		restaurant.setImage_path("c://users/UTKASRHGANOO/amarlogo.jpeg");
 		restaurant.setRating(4);
 		restaurant.setETA("20 -40 min");
@@ -44,21 +44,21 @@ public class Restaurant_Dao_Implement implements RestaurantDao
 		restaurant.setIsActive(false);
 		restaurant.setRestaurant_OwnerId(1);
 		
-		restsurantdao.addRestaurant(restaurant);
+		restsurantdao.addRestaurant(restaurant);*/
 		
 		/*restsurantdao.getRestaurant(1);*/
 		
 		/*restsurantdao.getallRestaurant();*/
 		
-		/*restaurant.setRestaurant_Name("Padmavati bhojnalaya ");
-		restaurant.setImage_path("c://users/UTKASRHGANOO/img_25478965463.jpeg");
+		restaurant.setRestaurant_Name("Padmavati bhojnalaya ");
+		restaurant.setImage_path("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQosSn_q7Xzw16drzlcVzit_SNftX8R0EdUvS5YsTjuPEcnFA7CtiZLQDI&s");
 		restaurant.setRating(5);
 		restaurant.setETA("10-20 min");
 		restaurant.setCuisineType("SouthIndian,Indian,chinese");
 		restaurant.setAddress("gokuldham socity Powdergali Near Filmcity Goregaon East,mumbai");
 		restaurant.setIsActive(false);
 		restaurant.setRestaurant_Id(1);
-		restsurantdao.update_Restaurant(restaurant);*/
+		restsurantdao.update_Restaurant(restaurant);
 
 	}
 	

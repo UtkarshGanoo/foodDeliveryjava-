@@ -25,6 +25,9 @@ public class Menu_Dao_Implement implements MenuDao {
 	final static String Update_MenuListQuery="UPDATE `menu_Table` SET  `item_Name`=?,`item_Cost`=?,`item_ImagePath`=?,`item_Description`=?,`item_Rating`=?, item_Status=? WHERE `menu_Id`=?";
 
 	final static String Delete_MenuQuery="DELETE FROM `menu_Table` WHERE `menu_Id`=?";
+	
+	final static String GET_MENU_BY_RESTAURANT =
+			"SELECT * FROM menu_Table WHERE restaurantMenuItem_Id=?";
 
 	
 	
@@ -33,14 +36,14 @@ public class Menu_Dao_Implement implements MenuDao {
 		MenuDao menudao = new Menu_Dao_Implement();
 		Menu menu = new Menu();
 		
-		/*menu.setMenuItem_Name("maxican");
-		menu.setMenuItem_Cost(379.99);
-		menu.setMenuItem_ImagePath("c://users/foodimages/img_78232114541.img");
-		menu.setMenuItem_Description("a beutiful round pipe shape made with glow wheat dou");
+		menu.setMenuItem_Name("Maxixcan");
+		menu.setMenuItem_Cost(786);
+		menu.setMenuItem_ImagePath("c://users/foodimages/Img_265653664758585.img");
+		menu.setMenuItem_Description("Mexican food is a vibrant culinary tradition famous for tacos, guacamole, and enchiladas.");
 		menu.setMenuItem_Status(true);
-		menu.setMenuItem_Rating(4.2);
-		menu.setRestaurantmenuItem_Id(1);
-		menudao.addMenuItem(menu);*/
+		menu.setMenuItem_Rating(4.5);
+		menu.setRestaurantmenuItem_Id(3);
+		menudao.addMenuItem(menu);
 		
 		/*menudao.getMenuItem(1);*/
 		
@@ -230,6 +233,45 @@ public class Menu_Dao_Implement implements MenuDao {
 		
 	}
 	
+	public List<Menu> getMenuByRestaurantId(int restaurantId) {
+
+	    List<Menu> menuList = new ArrayList<>();
+
+	    try {
+
+	        statement = connection.prepareStatement(GET_MENU_BY_RESTAURANT);
+
+	        statement.setInt(1, restaurantId);
+
+	        result = statement.executeQuery();
+
+	        while(result.next()) {
+
+	            Menu menu = new Menu();
+
+	            menu.setMenuItem_Id(result.getInt("menu_Id"));
+	            menu.setMenuItem_Name(result.getString("item_Name"));
+	            menu.setMenuItem_Cost(result.getDouble("item_Cost"));
+	            menu.setMenuItem_ImagePath(result.getString("item_ImagePath"));
+	            menu.setMenuItem_Description(result.getString("item_Description"));
+	            menu.setMenuItem_Status(result.getBoolean("item_Status"));
+	            menu.setMenuItem_Rating(result.getDouble("item_Rating"));
+	            menu.setRestaurantmenuItem_Id(result.getInt("restaurantMenuItem_Id"));
+
+	            menuList.add(menu);
+	        }
+
+	    } catch(Exception e) {
+
+	        e.printStackTrace();
+
+	    } finally {
+
+	        closeResources();
+	    }
+
+	    return menuList;
+	}
 	
 	
 	
@@ -253,5 +295,7 @@ public class Menu_Dao_Implement implements MenuDao {
 			        e.printStackTrace();
 			    	}
 			}
+
+
 
 }
